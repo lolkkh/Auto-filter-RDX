@@ -4732,6 +4732,7 @@ async def _show_filter_results(
 async def _edit_quietly(edit, **kwargs):
     """Run a Telegram edit, ignoring 'message is not modified' (same content pressed twice)."""
     try:
+        kwargs.pop("disable_web_page_preview", None)
         await edit(**kwargs)
     except Exception as exc:
         text = str(exc).upper()
